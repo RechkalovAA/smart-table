@@ -57,12 +57,6 @@ export function initData() {
                     sellers = makeIndex(sellersData, 'id', v => `${v.first_name} ${v.last_name}`);
                     customers = makeIndex(customersData, 'id', v => `${v.first_name} ${v.last_name}`);
                 } else {
-                    console.error('Не удалось извлечь массивы из ответа сервера. Структура ответа:', { 
-                        sellersJson, 
-                        customersJson,
-                        sellersData,
-                        customersData
-                    });
                     throw new Error('Неверный формат данных от сервера: ожидались массивы');
                 }
             }
@@ -95,7 +89,6 @@ export function initData() {
         const records = await response.json();
 
         if (!records || typeof records !== 'object' || !Array.isArray(records.items)) {
-            console.error('Неверный формат данных от сервера:', records);
             throw new Error('Неверный формат данных от сервера');
         }
 

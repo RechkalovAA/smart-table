@@ -5,7 +5,6 @@ import {initData} from "./data.js";
 import {processFormData} from "./lib/utils.js";
 
 import {initTable} from "./components/table.js";
-// @todo: подключение
 import {initPagination} from "./components/pagination.js";
 import {initSorting} from "./components/sorting.js";
 import {initFiltering} from "./components/filtering.js";
@@ -39,7 +38,6 @@ function collectState() {
 async function render(action) {
     let state = collectState(); // состояние полей из таблицы
     let query = {}; // здесь будут формироваться параметры запроса
-    // @todo: использование
     query = applySearching(query, state, action);
     query = applyFiltering(query, state, action);
     query = applySorting(query, state, action);
@@ -58,7 +56,6 @@ const sampleTable = initTable({
     after: ['pagination']
 }, render);
 
-// @todo: инициализация
 const applySearching = initSearching('search');
 const {applyFiltering, updateIndexes} = initFiltering(sampleTable.filter.elements);
 const applySorting = initSorting([

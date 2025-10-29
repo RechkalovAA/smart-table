@@ -11,7 +11,6 @@ export function initTable(settings, onAction) {
     const {tableTemplate, rowTemplate, before, after} = settings;
     const root = cloneTemplate(tableTemplate);
 
-    // @todo: #1.2 —  вывести дополнительные шаблоны до и после таблицы
     // before — добавляем перед таблицей (используем prepend, поэтому перебираем в обратном порядке)
     if (Array.isArray(before) && before.length > 0) {
         [...before].reverse().forEach(subName => {
@@ -29,7 +28,6 @@ export function initTable(settings, onAction) {
         });
     }
 
-    // @todo: #1.3 —  обработать события и вызвать onAction()
     root.container.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && e.target instanceof HTMLInputElement && e.target.type === 'text') {
             e.preventDefault();
@@ -50,7 +48,6 @@ export function initTable(settings, onAction) {
     });
 
     const render = (data) => {
-        // @todo: #1.1 — преобразовать данные в массив строк на основе шаблона rowTemplate
         const nextRows = data.map(item => {
             const row = cloneTemplate(rowTemplate);
 
